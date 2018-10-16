@@ -6,7 +6,8 @@ PseudoWards.optionAwarenessIcon = Menu.AddOptionIcon({"devsnowy", "Awareness"}, 
 PseudoWards.optionEnabled = Menu.AddOptionBool({"devsnowy", "Awareness", "Pseudo Wards"}, "Enabled", false)
 PseudoWards.optionAwarenessIcon = Menu.AddOptionIcon({"devsnowy", "Awareness", "Pseudo Wards"}, "panorama/images/items/ward_dispenser_png.vtex_c")
 
-PseudoWards.optionCalibrate = Menu.AddKeyOption({ "devsnowy", "Awareness", "Pseudo Wards"}, "Place Triangulation Point", Enum.ButtonCode.KEY_N)
+PseudoWards.optionCalibrate = Menu.AddKeyOption({ "devsnowy", "Awareness", "Pseudo Wards"}, "Place triangulation point", Enum.ButtonCode.KEY_NONE)
+PseudoWards.optionCalibrateClean = Menu.AddKeyOption({ "devsnowy", "Awareness", "Pseudo Wards"}, "Clear points", Enum.ButtonCode.KEY_NONE)
 
 PseudoWards.font = Renderer.LoadFont("Tahoma", 28, Enum.FontWeight.NORMAL)
 PseudoWards.points = {}
@@ -21,6 +22,11 @@ function PseudoWards.OnUpdate()
         not Entity.IsAlive(hero)
       then
         return false end
+        
+        if Menu.IsKeyDownOnce(PseudoWards.optionCalibrateClean) then
+            PseudoWards.points = {}
+            PseudoWards.nextTick = 0
+        end
         
         local isHeroVisibleToEnemies = NPC.IsVisibleToEnemies(hero)
         
@@ -63,7 +69,7 @@ function PseudoWards.OnDraw()
     
     Renderer.SetDrawColor(255, 255, 0)
     Renderer.DrawText(PseudoWards.font, x, y, "Possible ward", 1)
-    Renderer.DrawOutlineRect(x - 800, y - 800, 1600, 1600)
+    Renderer.DrawOutlineRect(x - 250, y - 250, 500, 500)
 
     
   end
