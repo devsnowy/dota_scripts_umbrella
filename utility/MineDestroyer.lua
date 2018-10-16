@@ -33,7 +33,6 @@ function MineDestroyer.OnUpdate()
 end
 
 function MineDestroyer.Attack(hero, target)
-	
 	if
 		MineDestroyer.isHeroInvisible(hero) or
 		MineDestroyer.isHeroChannelling(hero) or
@@ -45,7 +44,6 @@ function MineDestroyer.Attack(hero, target)
 end
 
 function MineDestroyer.isHeroInvisible(hero)
-
 	if
 		not hero or
 		not Entity.IsAlive(hero)
@@ -75,7 +73,6 @@ function MineDestroyer.isHeroInvisible(hero)
 end
 
 function MineDestroyer.isHeroUnderStress(hero)
-
 	if
 		NPC.IsStunned(hero) or
 		NPC.HasModifier(hero, "modifier_bashed") or
@@ -106,7 +103,6 @@ function MineDestroyer.isHeroUnderStress(hero)
 end
 
 function MineDestroyer.isHeroChannelling(hero)
-
 	if
 		NPC.IsChannellingAbility(hero) or
 		NPC.HasModifier(hero, "modifier_teleporting")
