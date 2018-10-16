@@ -1,8 +1,10 @@
 Hello guys,
 I will be adding here scripts for Dota 2, hero specific ones and utility; Most of them will be forked and changed to have some other functionality or bug fixes.
+
 Please create an issue if you wish something to be fixed or added.
+If you also wish to add a script here, please create an issue and I will take it in consideration.
 
 Furion forked from https://github.com/KrekerSwegger/UmbrelllaScripts/blob/master/Furion.lua
-SkyWarth froked from https://github.com/UnhappyAngel/scripts/blob/master/SkyWrath.lua
+SkyWrath froked from https://github.com/UnhappyAngel/scripts/blob/master/SkyWrath.lua
 Zeus forked from https://github.com/Svotin/umbrella/blob/master/Heroes/Zeus.lua
 MineDestroyer forked from https://github.com/MrSpenk/DotaScripts/blob/master/MineDestroyer.lua 
