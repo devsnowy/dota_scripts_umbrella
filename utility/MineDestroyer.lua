@@ -32,14 +32,14 @@ function MineDestroyer.Attack(hero, target)
 	if
 		not hero or
 		not Entity.IsAlive(hero) or
-		not target or
+		not target
 	then
 		return end
 	
 	if
 		MineDestroyer.isHeroInvisible(hero) or
 		MineDestroyer.isHeroChannelling(hero) or
-		MineDestroyer.isHeroUnderStress(hero) or
+		MineDestroyer.isHeroUnderStress(hero)
 	then
 		return end
 
@@ -106,7 +106,7 @@ function MineDestroyer.isHeroUnderStress(hero)
 		NPC.HasModifier(hero, "modifier_techies_stasis_trap_stunned") or
 		NPC.HasModifier(hero, "modifier_storm_spirit_electric_vortex_pull") or
 		NPC.HasModifier(hero, "modifier_tidehunter_ravage") or
-		NPC.HasModifier(hero, "modifier_windrunner_shackle_shot") or
+		NPC.HasModifier(hero, "modifier_windrunner_shackle_shot")
 	then
 		return false end
 
