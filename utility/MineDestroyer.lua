@@ -6,7 +6,11 @@ function MineDestroyer.OnUpdate()
 	if not Menu.IsEnabled( MineDestroyer.optionEnabled ) then return end
 
 	local hero = Heroes.GetLocal()
-	if not hero then return end
+	if
+		not hero or
+		not Entity.IsAlive(hero)
+	then
+		return false end
 		
 	local radius = NPC.GetAttackRange(hero)
 		
@@ -21,7 +25,7 @@ function MineDestroyer.OnUpdate()
 		local npc = npcs[i]
 		if npc and not Entity.IsSameTeam(hero, npc) then
 			local name = NPC.GetUnitName(npc)
-			if name and name == "npc_dota_techies_land_mine" then
+			if name and name == "npc_dota_techies_land_mine" or name == "npc_dota_techies_stasis_trap" then
 				MineDestroyer.Attack(hero, npc)
 			end
 		end
@@ -29,12 +33,6 @@ function MineDestroyer.OnUpdate()
 end
 
 function MineDestroyer.Attack(hero, target)
-	if
-		not hero or
-		not Entity.IsAlive(hero) or
-		not target
-	then
-		return end
 	
 	if
 		MineDestroyer.isHeroInvisible(hero) or
@@ -79,12 +77,6 @@ end
 function MineDestroyer.isHeroUnderStress(hero)
 
 	if
-		not hero or
-		not Entity.IsAlive(hero)
-	then
-		return false end
-
-	if
 		NPC.IsStunned(hero) or
 		NPC.HasModifier(hero, "modifier_bashed") or
 		NPC.HasState(hero, Enum.ModifierState.MODIFIER_STATE_INVULNERABLE) or
@@ -108,16 +100,14 @@ function MineDestroyer.isHeroUnderStress(hero)
 		NPC.HasModifier(hero, "modifier_tidehunter_ravage") or
 		NPC.HasModifier(hero, "modifier_windrunner_shackle_shot")
 	then
-		return false end
+		return true end
 
-	return true
+	return false
 end
 
 function MineDestroyer.isHeroChannelling(hero)
 
 	if
-		not hero or
-		not Entity.IsAlive(hero) or
 		NPC.IsChannellingAbility(hero) or
 		NPC.HasModifier(hero, "modifier_teleporting")
 	then
