@@ -19,7 +19,7 @@ function MineDestroyer.OnUpdate()
 	end
 		
 	local npcs = Entity.GetUnitsInRadius(hero, radius, Enum.TeamType.TEAM_ENEMY)
-	if not npcs or #npcs < 1 then return end
+	if not npcs or #npcs < 1 or #npcs > 2 then return end
 
 	for i = 0, #npcs do
 		local npc = npcs[i]
